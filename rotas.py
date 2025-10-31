@@ -4,9 +4,8 @@ from functools import wraps
 from aplicacao import app, db
 from modelos import Usuario, Funcionario, Cargo, Agendamento, LogAuditoria, ConfiguracaoEmpresa, Servico
 from formularios import (LoginForm, CadastroUsuarioForm, CadastroClienteForm, FuncionarioForm,
-                         CargoForm, AgendamentoForm, AtualizarStatusAgendamentoForm,
-                         ConfiguracaoBotWhatsAppForm, ConfiguracaoEmpresaForm, ServicoForm, UsuarioEditForm)
-from datetime import datetime, timedelta
+                         CargoForm, ConfiguracaoEmpresaForm, ServicoForm, UsuarioEditForm)
+from datetime import datetime
 from sqlalchemy import and_, or_, func
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
@@ -109,7 +108,7 @@ def master_required(f):
     def decorated_function(*args, **kwargs):
         if not current_user.is_authenticated or not current_user.is_master():
             flash('Acesso negado. Apenas usuários Master podem acessar esta página.', 'danger')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('servicos_pesquisar'))
         return f(*args, **kwargs)
     return decorated_function
 
@@ -126,7 +125,7 @@ def permission_required(permission):
             # Use getattr para verificar se a permissão existe e se é True
             if not getattr(current_user, permission, False):
                 flash('Você não tem permissão para acessar esta página.', 'danger')
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('servicos_pesquisar'))
             
             return f(*args, **kwargs)
         return decorated_function
@@ -138,8 +137,8 @@ def index():
     Rota principal, redireciona para o dashboard se o usuário estiver autenticado.
     """
     if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
-    return render_template('index.html')
+        return redirect(url_for('servicos_pesquisar'))
+    return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -147,7 +146,7 @@ def login():
     Rota para o login de usuários.
     """
     if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('servicos_pesquisar'))
     
     form = LoginForm()
     if form.validate_on_submit():
@@ -171,14 +170,14 @@ def login():
             if usuario and usuario.ativo:
                 login_user(usuario)
                 flash('Login realizado com sucesso!', 'success')
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('servicos_pesquisar'))
         # Fluxo padrão
         usuario = Usuario.query.filter_by(username=username).first()
         if usuario and usuario.check_password(password) and usuario.ativo:
             login_user(usuario)
             next_page = request.args.get('next')
             flash('Login realizado com sucesso!', 'success')
-            return redirect(next_page) if next_page else redirect(url_for('dashboard'))
+            return redirect(next_page) if next_page else redirect(url_for('servicos_pesquisar'))
         flash('Usuário ou senha inválidos.', 'danger')
     
     return render_template('login.html', form=form)
@@ -193,73 +192,13 @@ def logout():
     flash('Logout realizado com sucesso!', 'info')
     return redirect(url_for('index'))
 
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    """
-    Dashboard principal, com estatísticas e agendamentos recentes.
-    Os dados exibidos variam de acordo com o tipo de usuário.
-    """
-    stats = {}
-    config = ConfiguracaoEmpresa.query.first()
-    
-    if current_user.is_master():
-        stats = {
-            'total_usuarios': Usuario.query.count(),
-            'total_funcionarios': Funcionario.query.count(),
-            'total_agendamentos': Agendamento.query.count(),
-            'agendamentos_pendentes': Agendamento.query.filter_by(status='agendado').count(),
-            'agendamentos_hoje': Agendamento.query.filter(
-                func.date(Agendamento.data_agendamento) == datetime.utcnow().date()
-            ).count()
-        }
-        agendamentos_recentes = Agendamento.query.order_by(Agendamento.criado_em.desc()).limit(5).all()
-    
-    elif current_user.is_funcionario():
-        funcionario = Funcionario.query.filter_by(usuario_id=current_user.id).first()
-        if funcionario:
-            stats = {
-                'meus_agendamentos_hoje': Agendamento.query.filter(
-                    and_(
-                        Agendamento.funcionario_id == funcionario.id,
-                        func.date(Agendamento.data_agendamento) == datetime.utcnow().date()
-                    )
-                ).count(),
-                'meus_agendamentos_pendentes': Agendamento.query.filter(
-                    and_(
-                        Agendamento.funcionario_id == funcionario.id,
-                        Agendamento.status == 'agendado'
-                    )
-                ).count()
-            }
-            agendamentos_recentes = Agendamento.query.filter_by(funcionario_id=funcionario.id)\
-                                                    .order_by(Agendamento.data_agendamento.desc()).limit(5).all()
-        else:
-            agendamentos_recentes = []
-    
-    else:
-        stats = {
-            'meus_agendamentos': Agendamento.query.filter_by(cliente_id=current_user.id).count(),
-            'meus_proximos_agendamentos': Agendamento.query.filter(
-                and_(
-                    Agendamento.cliente_id == current_user.id,
-                    Agendamento.data_agendamento > datetime.utcnow(),
-                    Agendamento.status == 'agendado'
-                )
-            ).count()
-        }
-        agendamentos_recentes = Agendamento.query.filter_by(cliente_id=current_user.id)\
-                                                .order_by(Agendamento.data_agendamento.desc()).limit(5).all()
-    
-    return render_template('dashboard.html', stats=stats, agendamentos_recentes=agendamentos_recentes, config=config)
-
 @app.route('/cadastro')
 @login_required
 def cadastro():
     """
     Redireciona para o dashboard com menu lateral expandido.
     """
-    return redirect(url_for('dashboard', expand_menu='cadastro'))
+    return redirect(url_for('servicos_pesquisar', expand_menu='cadastro'))
 
 @app.route('/cadastro/usuario', methods=['GET'])
 @login_required

@@ -86,22 +86,6 @@ with app.app_context():
         )
         db.session.add(config)
     
-    # Create default positions if they don't exist
-    default_positions = [
-        {'nome': 'Gerente', 'descricao': 'Gerente geral'},
-        {'nome': 'Atendente', 'descricao': 'Atendimento ao cliente'},
-        {'nome': 'Especialista', 'descricao': 'Especialista técnico'}
-    ]
-    
-    for pos_data in default_positions:
-        cargo = Cargo.query.filter_by(nome=pos_data['nome']).first()
-        if not cargo:
-            cargo = Cargo(
-                nome=pos_data['nome'],
-                descricao=pos_data['descricao']
-            )
-            db.session.add(cargo)
-    
     # Migração leve: clientes não precisam de senha
     try:
         # Tornar a coluna password_hash opcional (DROP NOT NULL)
