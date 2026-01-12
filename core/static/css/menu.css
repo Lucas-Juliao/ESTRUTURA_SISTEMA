@@ -50,8 +50,45 @@ body {
     background-color: #122a3e;
 }
 
-.sidebar ul li a i {
-    margin-right: 10px;
+.sidebar ul {
+    overflow-y: auto;
+    height: calc(100% - 80px); /* Adjust based on header height */
+}
+
+.sidebar ul li {
+    position: relative;
+}
+
+.sidebar ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar ul li a i.fa-chevron-down,
+.sidebar ul li a i.fa-chevron-right {
+    transition: transform 0.3s ease;
+}
+
+.sidebar ul li a.active i.fa-chevron-down,
+.sidebar ul li a.active i.fa-chevron-right {
+    transform: rotate(90deg);
+}
+
+.submenu, .submenu-level2 {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+    background-color: #122a3e;
+}
+
+.submenu a {
+    font-size: 0.9rem;
+}
+
+.submenu-level2 a {
+    font-size: 0.85rem;
+    padding-left: 30px;
 }
 
 .main-content {
@@ -65,7 +102,7 @@ body {
 
 header {
     background-color: #fff;
-    padding: 10px 20px;
+    padding: 5px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,8 +127,13 @@ header {
 }
 
 .logo i {
-    font-size: 1.5rem;
-    margin-right: 10px;
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+.logo h2 {
+    font-size: 1.3rem;
+    margin: 0;
 }
 
 .user-info {
@@ -100,21 +142,21 @@ header {
 }
 
 .user-icon {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     background-color: #f0f0f0;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #1c3d5a;
 }
 
 .user-dropdown {
     display: none;
     position: absolute;
-    top: 50px;
+    top: 40px;
     right: 0;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -150,15 +192,15 @@ main {
 }
 
 .menu-toggle .bar {
-    width: 25px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     background-color: #1c3d5a;
-    margin: 5px 0;
+    margin: 4px 0;
     transition: all 0.3s ease;
 }
 
 .menu-toggle.active .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
+    transform: rotate(-45deg) translate(-4px, 5px);
 }
 
 .menu-toggle.active .bar:nth-child(2) {
@@ -166,5 +208,5 @@ main {
 }
 
 .menu-toggle.active .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+    transform: rotate(45deg) translate(-4px, -5px);
 }

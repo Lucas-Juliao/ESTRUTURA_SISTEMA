@@ -32,4 +32,24 @@ document.addEventListener('DOMContentLoaded', function() {
             userDropdown.classList.remove('active');
         }
     });
+
+    // Accordion menu logic
+    const menuModules = document.querySelectorAll('.menu-module > a, .submenu-module > a');
+    menuModules.forEach(function(module) {
+        module.addEventListener('click', function(event) {
+            event.preventDefault();
+            const submenu = this.nextElementSibling;
+            if (submenu && (submenu.classList.contains('submenu') || submenu.classList.contains('submenu-level2'))) {
+                // Toggle active class for arrow rotation
+                this.classList.toggle('active');
+
+                // Toggle display of the submenu
+                if (submenu.style.display === 'block') {
+                    submenu.style.display = 'none';
+                } else {
+                    submenu.style.display = 'block';
+                }
+            }
+        });
+    });
 });
