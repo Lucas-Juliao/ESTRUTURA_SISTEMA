@@ -24,20 +24,25 @@
     </div>
     <div class="main-content">
         <header>
-            <div class="menu-toggle">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <div class="logo">
-                <i class="fas fa-cloud"></i>
-                <h2>Safira Cloud</h2>
+            <div class="header-left">
+                <div class="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <a href="{% url 'menu' %}" class="logo">
+                    <i class="fas fa-cloud"></i>
+                    <h2>Safira Cloud</h2>
+                </a>
             </div>
             <div class="user-info">
-                <span>Bem-vindo, {{ user.get_full_name|default:user.username }}</span>
-                <a href="{% url 'logout' %}" class="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i> Sair
-                </a>
+                <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-dropdown">
+                    <p>Olá, {{ user.get_full_name|default:user.username }}</p>
+                    <a href="{% url 'logout' %}">Sair</a>
+                </div>
             </div>
         </header>
         <main>

@@ -67,3 +67,27 @@ Watching for file changes with StatReloader
 [12/Jan/2026 16:10:39] "GET /menu/ HTTP/1.1" 200 1707
 [12/Jan/2026 16:10:40] "GET /static/css/menu.css HTTP/1.1" 200 2054
 [12/Jan/2026 16:10:40] "GET /static/js/menu.js HTTP/1.1" 200 956
+[12/Jan/2026 16:34:45] "GET /login/ HTTP/1.1" 200 1171
+[12/Jan/2026 16:34:45] "GET /static/css/login.css HTTP/1.1" 200 1564
+[12/Jan/2026 16:34:47] "POST /login/ HTTP/1.1" 302 0
+[12/Jan/2026 16:34:47] "GET /menu/ HTTP/1.1" 200 1892
+[12/Jan/2026 16:34:47] "GET /static/css/menu.css HTTP/1.1" 200 2701
+[12/Jan/2026 16:34:47] "GET /static/js/menu.js HTTP/1.1" 200 1482
+/app/safira_cloud/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 12, 2026 - 15:53:59
+Django version 6.0.1, using settings 'safira_cloud.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/
+Watching for file changes with StatReloader
+[12/Jan/2026 16:38:22] "GET /login/ HTTP/1.1" 200 1171
+[12/Jan/2026 16:38:22] "GET /static/css/login.css HTTP/1.1" 200 1564
+[12/Jan/2026 16:38:24] "POST /login/ HTTP/1.1" 302 0
+[12/Jan/2026 16:38:24] "GET /menu/ HTTP/1.1" 200 1892
+[12/Jan/2026 16:38:24] "GET /static/css/menu.css HTTP/1.1" 200 2701
+[12/Jan/2026 16:38:24] "GET /static/js/menu.js HTTP/1.1" 200 1482
