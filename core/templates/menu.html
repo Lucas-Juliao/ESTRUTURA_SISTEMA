@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safira Cloud - Menu</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+        </div>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Clientes</a></li>
+            <li><a href="#"><i class="fas fa-box"></i> Produtos</a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i> Vendas</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo">
+                <i class="fas fa-cloud"></i>
+                <h2>Safira Cloud</h2>
+            </div>
+            <div class="user-info">
+                <span>Bem-vindo, {{ user.get_full_name|default:user.username }}</span>
+                <a href="{% url 'logout' %}" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </a>
+            </div>
+        </header>
+        <main>
+            <!-- Conteúdo principal aqui -->
+        </main>
+    </div>
+    <script src="{% static 'js/menu.js' %}"></script>
+</body>
+</html>
