@@ -5,10 +5,10 @@ from django.contrib.auth.hashers import make_password
 
 def create_default_user(apps, schema_editor):
     User = apps.get_model('auth', 'User')
-    if not User.objects.filter(username='safira').exists():
+    if not User.objects.filter(username='admin_safira').exists():
         User.objects.create(
-            username='safira',
-            password=make_password('safira123'),
+            username='admin_safira',
+            password=make_password('safiradmin'),
             is_superuser=True,
             is_staff=True,
             first_name='Safira',

@@ -21,8 +21,16 @@ body {
 }
 
 .sidebar-header {
+    padding: 20px;
     text-align: center;
-    margin-bottom: 30px;
+    background-color: #122a3e;
+}
+
+.sidebar-divider {
+    border: 0;
+    height: 1px;
+    background-color: #3e5f7f;
+    margin: 0 20px;
 }
 
 .sidebar ul {
@@ -57,7 +65,7 @@ body {
 
 header {
     background-color: #fff;
-    padding: 15px 20px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,4 +111,24 @@ header {
 
 main {
     padding: 20px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #1c3d5a;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
