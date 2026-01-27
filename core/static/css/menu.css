@@ -1,0 +1,257 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background-color: #1c3d5a;
+    color: #fff;
+    padding-top: 20px;
+    transition: left 0.3s ease;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    background-color: #122a3e;
+}
+
+.sidebar-divider {
+    border: 0;
+    height: 1px;
+    background-color: #3e5f7f;
+    margin: 0 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #122a3e;
+}
+
+.sidebar ul {
+    overflow-y: auto;
+    height: calc(100% - 80px); /* Adjust based on header height */
+}
+
+.sidebar ul li {
+    position: relative;
+}
+
+.sidebar ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    color: #f1f1f1;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 500;
+}
+
+.sidebar ul li a:hover {
+    background-color: #2c5d87;
+    color: #fff;
+}
+
+.module-item {
+    display: flex;
+    align-items: center;
+}
+
+.module-item i {
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.sidebar ul li a i.fa-chevron-down,
+.sidebar ul li a i.fa-chevron-right {
+    transition: transform 0.3s ease;
+}
+
+.sidebar ul li a.active i.fa-chevron-down,
+.sidebar ul li a.active i.fa-chevron-right {
+    transform: rotate(90deg);
+}
+
+.submenu, .submenu-level2 {
+    display: none;
+    list-style: none;
+    padding-left: 0;
+    background-color: #122a3e;
+}
+
+.submenu a {
+    font-size: 0.9rem;
+    padding-left: 55px; /* Align with main module text */
+}
+
+.submenu-level2 {
+    padding-left: 15px; /* Indent level 2 */
+}
+
+.submenu-level2 a {
+    font-size: 0.85rem;
+    padding-left: 70px; /* Further indent */
+}
+
+/* Custom Scrollbar */
+.sidebar ul::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar ul::-webkit-scrollbar-track {
+    background: #1c3d5a;
+}
+
+.sidebar ul::-webkit-scrollbar-thumb {
+    background-color: #2c5d87;
+    border-radius: 10px;
+    border: 2px solid #1c3d5a;
+}
+
+.sidebar ul::-webkit-scrollbar-thumb:hover {
+    background-color: #3e5f7f;
+}
+
+.main-content {
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.active {
+    margin-left: 250px;
+}
+
+header {
+    background-color: #fff;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: #1c3d5a;
+    text-decoration: none;
+}
+
+.logo i {
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+.logo h2 {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.user-info {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #1c3d5a;
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.user-dropdown.active {
+    display: block;
+}
+
+.user-dropdown p {
+    margin: 0 0 10px;
+    font-weight: bold;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 8px 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-dropdown a:hover {
+    background-color: #f0f0f0;
+}
+
+main {
+    padding: 20px;
+}
+
+.menu-toggle .bar {
+    width: 20px;
+    height: 2px;
+    background-color: #1c3d5a;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-4px, 5px);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-4px, -5px);
+}

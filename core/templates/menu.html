@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safira Cloud - Menu</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Safira Cloud</h3>
+        </div>
+        <hr class="sidebar-divider">
+        <ul class="menu-list">
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-edit"></i><span>Cadastro</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Pessoas</a></li>
+                    <li class="submenu-module">
+                        <a href="#">Itens <i class="fas fa-chevron-right"></i></a>
+                        <ul class="submenu-level2">
+                            <li><a href="#">Produtos</a></li>
+                            <li><a href="#">Serviços</a></li>
+                            <li><a href="#">Grupos e Categorias</a></li>
+                            <li><a href="#">Unidades de Medida</a></li>
+                            <li><a href="#">Tabela de Preços</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-module">
+                        <a href="#">Financeiro <i class="fas fa-chevron-right"></i></a>
+                         <ul class="submenu-level2">
+                            <li><a href="#">Contas Bancárias</a></li>
+                            <li><a href="#">Plano de Contas</a></li>
+                            <li><a href="#">Centros de Custo</a></li>
+                            <li><a href="#">Formas de Pagamento</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu-module">
+                        <a href="#">Fiscal <i class="fas fa-chevron-right"></i></a>
+                        <ul class="submenu-level2">
+                            <li><a href="#">Natureza da Operação (CFOP)</a></li>
+                            <li><a href="#">Regras de Tributação</a></li>
+                            <li><a href="#">Nomenclatura Comum do Mercosul (NCM)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-users"></i><span>CRM</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel CRM</a></li>
+                    <li><a href="#">Oportunidades (Funil de Vendas)</a></li>
+                    <li><a href="#">Leads e Contatos</a></li>
+                    <li><a href="#">Empresas (Contas)</a></li>
+                    <li><a href="#">Tarefas e Atividades</a></li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-shopping-cart"></i><span>Vendas</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel de Vendas</a></li>
+                    <li><a href="#">Orçamentos</a></li>
+                    <li><a href="#">Pedidos de Venda</a></li>
+                    <li><a href="#">Contratos de Venda</a></li>
+                    <li><a href="#">Expedição e Entregas</a></li>
+                    <li><a href="#">Comissões</a></li>
+                </ul>
+            </li>
+             <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-wallet"></i><span>Financeiro</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel Financeiro</a></li>
+                    <li><a href="#">Contas a Receber</a></li>
+                    <li><a href="#">Contas a Pagar</a></li>
+                    <li><a href="#">Fluxo de Caixa</a></li>
+                    <li><a href="#">Conciliação Bancária</a></li>
+                    <li><a href="#">Tesouraria (Movimentações)</a></li>
+                    <li><a href="#">Gestão de Boletos</a></li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-landmark"></i><span>Fiscal</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel Fiscal</a></li>
+                    <li><a href="#">Gestão de Documentos Fiscais (NF-e, NFS-e)</a></li>
+                    <li><a href="#">Apuração de Impostos</a></li>
+                    <li><a href="#">Obrigações Acessórias (SPED)</a></li>
+                    <li><a href="#">Arquivos Fiscais</a></li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-dolly"></i><span>Compras</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel de Compras</a></li>
+                    <li><a href="#">Requisições de Compra</a></li>
+                    <li><a href="#">Cotações com Fornecedores</a></li>
+                    <li><a href="#">Pedidos de Compra</a></li>
+                    <li><a href="#">Recebimento de Mercadorias</a></li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-boxes"></i><span>Estoque</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel de Estoque</a></li>
+                    <li><a href="#">Posição de Estoque</a></li>
+                    <li><a href="#">Movimentações (Entradas, Saídas, Transferências)</a></li>
+                    <li><a href="#">Inventário e Ajustes</a></li>
+                    <li><a href="#">Controle de Lote e Validade</a></li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-cogs"></i><span>Serviços / Projetos</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel de Serviços</a></li>
+                    <li><a href="#">Ordens de Serviço (OS)</a></li>
+                    <li><a href="#">Gestão de Projetos</a></li>
+                    <li><a href="#">Apontamento de Horas</a></li>
+                    <li><a href="#">Faturamento de Serviços</a></li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-bullhorn"></i><span>Marketing</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel de Marketing</a></li>
+                    <li><a href="#">Campanhas</a></li>
+                    <li><a href="#">Segmentação de Contatos</a></li>
+                    <li><a href="#">E-mail Marketing</a></li>
+                    <li><a href="#">Automação de Marketing</a></li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-id-badge"></i><span>Recursos Humanos</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel de RH</a></li>
+                    <li><a href="#">Folha de Pagamento</a></li>
+                    <li><a href="#">Controle de Ponto</a></li>
+                    <li><a href="#">Gestão de Férias</a></li>
+                    <li><a href="#">Recrutamento e Seleção</a></li>
+                    <li><a href="#">Portal do Colaborador</a></li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-chart-bar"></i><span>Relatórios / BI</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Painel de Indicadores (Dashboards)</a></li>
+                    <li><a href="#">Relatórios de Vendas</a></li>
+                    <li><a href="#">Relatórios Financeiros</a></li>
+                    <li><a href="#">Relatórios de Estoque</a></li>
+                    <li><a href="#">Relatórios de CRM</a></li>
+                    <li><a href="#">Construtor de Relatórios</a></li>
+                </ul>
+            </li>
+            <li class="menu-module">
+                <a href="#">
+                    <div class="module-item"><i class="fas fa-sliders-h"></i><span>Configurações / Administração</span></div> <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Minha Conta</a></li>
+                    <li><a href="#">Usuários e Permissões</a></li>
+                    <li><a href="#">Empresa e Filiais</a></li>
+                    <li><a href="#">Modelos de Documentos e E-mails</a></li>
+                    <li><a href="#">Numeração e Séries</a></li>
+                    <li><a href="#">Integrações</a></li>
+                    <li><a href="#">Logs do Sistema</a></li>
+                    <li><a href="#">Configuração Exclusiva para Empresas</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="header-left">
+                <div class="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <a href="{% url 'menu' %}" class="logo">
+                    <i class="fas fa-cloud"></i>
+                    <h2>Safira Cloud</h2>
+                </a>
+            </div>
+            <div class="user-info">
+                <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-dropdown">
+                    <p>Olá, {{ user.get_full_name|default:user.username }}</p>
+                    <a href="{% url 'logout' %}">Sair</a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <!-- Conteúdo principal aqui -->
+        </main>
+    </div>
+    <script src="{% static 'js/menu.js' %}"></script>
+</body>
+</html>
